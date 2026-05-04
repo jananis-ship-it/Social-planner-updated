@@ -83,7 +83,7 @@
     .feature-card {
       background: white;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
+      border-radius: 12px;
       transition: box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .feature-card:hover {
@@ -92,6 +92,7 @@
     }
     .feature-card::before {
       display: none;
+      border-radius: 12px 12px 0 0;
     }
     .feature-icon { transition: transform 0.25s ease; }
     .feature-card:hover .feature-icon { transform: scale(1.1); }
@@ -168,40 +169,40 @@
         <div class="grid grid-cols-5 gap-4 mb-4">
 
           <!-- Facebook -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#1877F2">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#1877F2">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Facebook</span>
           </div>
 
           <!-- Instagram -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 1.5c5.799 0 10.5 4.701 10.5 10.5S17.799 22.5 12 22.5 1.5 17.799 1.5 12 6.201 1.5 12 1.5zm3.75 3.75c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm-3.75 2.25c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6zm0 1.5c2.485 0 4.5 2.015 4.5 4.5s-2.015 4.5-4.5 4.5-4.5-2.015-4.5-4.5 2.015-4.5 4.5-4.5z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Instagram</span>
           </div>
 
           <!-- LinkedIn -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#0A66C2">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#0A66C2">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">LinkedIn</span>
           </div>
 
           <!-- TikTok -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
@@ -212,11 +213,11 @@
           </div>
 
           <!-- YouTube -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#FF0000">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#FF0000">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">YouTube</span>
@@ -227,18 +228,18 @@
         <div class="grid grid-cols-5 gap-4 mb-10">
 
           <!-- Pinterest -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#E60023">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#E60023">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Pinterest</span>
           </div>
 
           <!-- Threads -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
@@ -249,18 +250,18 @@
           </div>
 
           <!-- Bluesky -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#0085ff">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#0085ff">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.837 2.806 3.818 3.748 6.559 3.shipping-.05.013-.098.026-.147.04C3.543 14.765 1.4 16.9.717 19.7c-.36 1.473.083 3.14 1.54 3.14 3.147 0 6.313-3.587 7.744-5.348.003-.004.006-.008.009-.012.003.004.006.008.009.012 1.43 1.761 4.596 5.348 7.743 5.348 1.457 0 1.9-1.667 1.54-3.14C18.6 16.9 16.457 14.765 13.164 14.287c-.05-.014-.098-.027-.147-.04 2.741-.748 5.722-1.672 6.559-3.489C19.822 9.418 20.2 4.457 20.2 3.768c0-.688-.14-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.247 4.748 13.087 8.687 12 10.8z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Bluesky</span>
           </div>
 
           <!-- GBP -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
@@ -271,11 +272,11 @@
           </div>
 
           <!-- Community -->
-          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:12px;" onclick="togglePlatform(event)">
             <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:6px; background:#7C3AED">
+            <div class="w-14 h-14 flex items-center justify-center shadow-sm" style="border-radius:8px; background:#7C3AED">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Community</span>
