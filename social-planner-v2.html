@@ -9,16 +9,8 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: '#3b82f6',
-            secondary: '#8b5cf6',
-            success: '#10b981',
-          },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-          backdropBlur: {
-            xs: '2px',
           }
         }
       }
@@ -29,450 +21,376 @@
   <style>
     * { font-family: 'Inter', system-ui, sans-serif; }
 
-    body { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+    body { background: linear-gradient(160deg, #f0f4ff 0%, #f8fafc 50%, #f0f4ff 100%); }
 
-    .hero-gradient {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-
-    .platform-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      background: white;
-      border: 2px solid #e2e8f0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .platform-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .platform-card:hover::before {
-      left: 100%;
-    }
-
-    .platform-card:hover {
-      transform: translateY(-6px);
-      border-color: #3b82f6;
-      box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15);
-    }
-
-    .platform-card.selected {
-      border-color: #3b82f6;
-      background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
-
-    .platform-card.selected .check-ring {
-      display: flex;
-      animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .check-ring {
-      display: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
-    .btn-secondary {
-      border: 2px solid #e2e8f0;
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      background: #f8fafc;
-      border-color: #3b82f6;
-      color: #3b82f6;
-    }
-
-    .feature-card {
-      transition: all 0.3s ease;
-      background: white;
-      border: 1px solid #e2e8f0;
-      position: relative;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-color, #3b82f6), transparent);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-color, #3b82f6);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .feature-icon {
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    .badge-success {
-      background: linear-gradient(135deg, #dcfce7 0%, #d1fae5 100%);
-      color: #047857;
-      border: 1px solid #a7f3d0;
-    }
-
+    /* ── Nav ── */
     .tab-active {
       border-bottom: 3px solid #3b82f6;
       color: #3b82f6;
       font-weight: 600;
     }
 
-    .platform-grid {
-      perspective: 1000px;
+    /* ── Platform cards ── */
+    .platform-card {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      background: white;
+      border: 2px solid #e2e8f0;
+    }
+    .platform-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      box-shadow: 0 12px 28px rgba(59,130,246,0.15);
+    }
+    .platform-card.selected {
+      border-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    }
+    .platform-card.selected .check-ring {
+      display: flex;
+      animation: popIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .check-ring { display: none; }
+
+    @keyframes popIn {
+      0%   { transform: scale(0.4); opacity: 0; }
+      100% { transform: scale(1);   opacity: 1; }
     }
 
-    .shine-effect {
-      position: relative;
-      overflow: hidden;
+    /* ── CTA buttons ── */
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      transition: all 0.25s ease;
+      border-radius: 8px;
     }
+    .btn-primary:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(59,130,246,0.35);
+    }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    .shine-effect::after {
+    /* ── Feature cards ── */
+    .feature-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .feature-card:hover {
+      border-color: var(--accent, #3b82f6);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    }
+    .feature-card::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1), transparent 70%);
-      animation: shimmer 3s infinite;
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent, #3b82f6), transparent);
+      border-radius: 16px 16px 0 0;
     }
+    .feature-icon { transition: transform 0.25s ease; }
+    .feature-card:hover .feature-icon { transform: scale(1.1); }
 
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
+    /* ── Stats ── */
     .stat-number {
       font-size: 2rem;
       font-weight: 900;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* ── Badge ── */
+    .badge-success {
+      background: linear-gradient(135deg, #dcfce7, #d1fae5);
+      color: #047857;
+      border: 1px solid #a7f3d0;
     }
   </style>
 </head>
 <body class="min-h-screen">
 
-  <!-- Top nav bar -->
-  <header class="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-30">
-    <div class="flex items-center px-8 h-16 gap-2">
-      <nav class="flex items-center gap-2 text-sm font-medium text-gray-600">
-        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition">Marketing</span>
+  <!-- Nav -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-gray-200/60 sticky top-0 z-30">
+    <div class="flex items-center px-8 h-16">
+      <nav class="flex items-center gap-1 text-sm font-medium text-gray-500">
+        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">Marketing</span>
         <span class="px-4 py-2 rounded-lg bg-blue-50 text-blue-600 font-semibold tab-active cursor-pointer">Social Planner</span>
-        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition">Emails</span>
-        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition">Analytics</span>
+        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">Emails</span>
+        <span class="px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">Analytics</span>
       </nav>
     </div>
   </header>
 
-  <!-- Main content -->
-  <main class="max-w-5xl mx-auto px-8 py-20">
+  <main class="max-w-5xl mx-auto px-8 py-16">
 
-    <!-- Hero Section -->
-    <section class="mb-24">
-      <div class="text-center mb-12">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 badge-success px-4 py-2 rounded-full mb-8">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <!-- ══════════════════════════════════════
+         HERO — Platform connection is the star
+    ══════════════════════════════════════ -->
+    <section class="mb-20">
+
+      <!-- Text block -->
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 badge-success px-4 py-1.5 rounded-full mb-6 text-sm font-semibold">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
-          <span class="text-sm font-semibold">12,400+ teams trust GoHighLevel</span>
+          12,400+ teams trust GoHighLevel
         </div>
 
-        <!-- Main Headline -->
-        <h1 class="text-6xl font-black text-gray-900 tracking-tight mb-6 leading-tight">
-          <span class="block text-4xl font-semibold text-gray-700 mb-2">Grow your audience</span>
-          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Post everywhere in minutes
-          </span>
+        <!-- 24px semibold headline -->
+        <h1 style="font-size:24px; font-weight:600;" class="text-gray-900 mb-3 leading-snug">
+          Grow your audience — post everywhere in minutes
         </h1>
 
-        <!-- Subheadline -->
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
-          Connect all your social accounts once. Schedule, publish, and engage with your audience from a single dashboard.
+        <!-- 14px regular subheadline -->
+        <p style="font-size:14px; font-weight:400;" class="text-gray-500 max-w-xl mx-auto leading-relaxed">
+          Connect your social accounts once. Schedule, publish, and reply to comments from one place — no switching apps.
         </p>
-        <p class="text-gray-500 text-lg">No more switching between apps. No more missed opportunities.</p>
       </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-3 gap-8 mb-16 max-w-2xl mx-auto">
+      <!-- Stats row -->
+      <div class="flex justify-center gap-16 mb-10">
         <div class="text-center">
           <div class="stat-number">11+</div>
-          <p class="text-gray-600 text-sm font-medium mt-2">Platforms Supported</p>
+          <p class="text-gray-500 text-xs font-medium mt-1">Platforms</p>
         </div>
         <div class="text-center">
           <div class="stat-number">2M+</div>
-          <p class="text-gray-600 text-sm font-medium mt-2">Posts Scheduled</p>
+          <p class="text-gray-500 text-xs font-medium mt-1">Posts Scheduled</p>
         </div>
         <div class="text-center">
           <div class="stat-number">99%</div>
-          <p class="text-gray-600 text-sm font-medium mt-2">Uptime Guaranteed</p>
+          <p class="text-gray-500 text-xs font-medium mt-1">Uptime</p>
         </div>
       </div>
-    </section>
 
-    <!-- Platform Connection Section -->
-    <section class="mb-24 hero-gradient rounded-2xl p-12">
-      <div class="text-center mb-10">
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">Connect Your Platforms</h2>
-        <p class="text-gray-600">Select all the social networks where your audience is</p>
-      </div>
+      <!-- Platform connection card — prominent -->
+      <div class="bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/80 border border-blue-100 rounded-2xl px-10 py-12 shadow-sm">
 
-      <!-- Platform Grid -->
-      <div class="platform-grid mb-10">
+        <div class="text-center mb-8">
+          <h2 class="text-xl font-bold text-gray-900 mb-1">Connect Your Platforms</h2>
+          <p class="text-gray-500" style="font-size:14px;">Select all the social networks where your audience is</p>
+        </div>
+
+        <!-- Row 1 -->
         <div class="grid grid-cols-5 gap-4 mb-4">
+
           <!-- Facebook -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#1877F2">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#1877F2">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Facebook</span>
           </div>
 
           <!-- Instagram -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-gradient-to-br from-pink-600 to-pink-700 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Instagram</span>
           </div>
 
           <!-- LinkedIn -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-gradient-to-br from-blue-700 to-blue-800 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#0A66C2">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#0A66C2">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">LinkedIn</span>
           </div>
 
           <!-- TikTok -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-gray-900 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-black">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-black">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">TikTok</span>
           </div>
 
           <!-- YouTube -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-red-600 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#FF0000">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#FF0000">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">YouTube</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-5 gap-4">
+        <!-- Row 2 -->
+        <div class="grid grid-cols-5 gap-4 mb-10">
+
           <!-- Pinterest -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-red-700 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#E60023">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#E60023">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Pinterest</span>
           </div>
 
           <!-- Threads -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-gray-900 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-black">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-black">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.312-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.818.743 4.852-1.33 6.886-1.8 1.772-4.029 2.479-7.277 2.501l-.225.422z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Threads</span>
           </div>
 
           <!-- Bluesky -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-blue-500 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#0085ff">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#0085ff">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.837 2.806 3.818 3.748 6.559 3.shipping-.05.013-.098.026-.147.04C3.543 14.765 1.4 16.9.717 19.7c-.36 1.473.083 3.14 1.54 3.14 3.147 0 6.313-3.587 7.744-5.348.003-.004.006-.008.009-.012.003.004.006.008.009.012 1.43 1.761 4.596 5.348 7.743 5.348 1.457 0 1.9-1.667 1.54-3.14C18.6 16.9 16.457 14.765 13.164 14.287c-.05-.014-.098-.027-.147-.04 2.741-.748 5.722-1.672 6.559-3.489C19.822 9.418 20.2 4.457 20.2 3.768c0-.688-.14-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C12.247 4.748 13.087 8.687 12 10.8z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Bluesky</span>
           </div>
 
           <!-- GBP -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-yellow-500 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-white border-2 border-gray-300">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-white border border-gray-200">
               <svg class="w-8 h-8" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">GBP</span>
           </div>
 
           <!-- Community -->
-          <div class="platform-card rounded-2xl p-6 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-3 right-3 w-6 h-6 bg-purple-600 rounded-full items-center justify-center shadow-lg">
-              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+              <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
-            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background:#7C3AED">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#7C3AED">
               <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
             </div>
             <span class="text-sm font-semibold text-gray-800">Community</span>
           </div>
         </div>
-      </div>
 
-      <!-- CTA Buttons -->
-      <div class="flex flex-col items-center gap-4 mt-12">
-        <p id="selection-hint" class="text-sm font-medium text-gray-600">Select at least one platform to continue</p>
-        <div class="flex gap-4">
+        <!-- CTAs -->
+        <div class="flex flex-col items-center gap-3">
+          <p id="selection-hint" class="text-sm font-medium text-gray-500">Select at least one platform to continue</p>
           <button
             id="connect-btn"
             onclick="handleConnect()"
             disabled
-            class="btn-primary text-white font-semibold px-8 py-3 rounded-lg text-base shadow-lg disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+            class="btn-primary text-white font-semibold px-10 py-3 text-sm shadow-md"
           >
-            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            <svg class="w-4 h-4 inline mr-2 -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
             Connect selected accounts
           </button>
-          <button class="btn-secondary text-gray-700 font-semibold px-8 py-3 rounded-lg text-base">
-            View setup guide
+          <button class="text-sm text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors">
+            I'll connect accounts later
           </button>
         </div>
-        <button class="text-sm text-gray-500 hover:text-gray-700 underline underline-offset-2">
-          I'll connect accounts later
-        </button>
+
       </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- ══════════════════════════════════════
+         FEATURES
+    ══════════════════════════════════════ -->
     <section>
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-3">Everything you need to manage social</h2>
-        <p class="text-gray-600 text-lg">Powerful features designed for modern marketers</p>
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Everything you need to manage social</h2>
+        <p class="text-gray-500 text-sm">Powerful features designed for modern marketers</p>
       </div>
 
-      <div class="grid grid-cols-2 gap-6 mb-6">
-        <!-- Feature 1 -->
-        <div class="feature-card rounded-2xl p-8" style="--accent-color: #3b82f6;">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="feature-icon w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+      <div class="grid grid-cols-2 gap-5">
+
+        <!-- Feature 1 — CSV -->
+        <div class="feature-card p-7" style="--accent:#3b82f6;">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-gray-900">Bulk Scheduling via CSV</h3>
-              <p class="text-gray-600 text-sm mt-1">Import and schedule hundreds of posts at once</p>
+              <h3 style="font-size:16px; font-weight:600;" class="text-gray-900 leading-tight">Bulk Scheduling via CSV</h3>
+              <p style="font-size:14px; font-weight:400;" class="text-gray-400 mt-0.5">Import and schedule hundreds of posts at once</p>
             </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">Perfect for content creators and marketing teams managing multiple campaigns. Support for all major formats.</p>
-          <button class="text-blue-600 font-semibold text-sm hover:text-blue-700 flex items-center gap-1">
-            Learn more →
+          <p style="font-size:14px; font-weight:400;" class="text-gray-500 leading-relaxed mb-4">Perfect for content creators and marketing teams managing multiple campaigns. Supports all major content formats.</p>
+          <button class="text-blue-600 font-semibold text-sm hover:text-blue-700 flex items-center gap-1 transition-colors">
+            Upload CSV <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="feature-card rounded-2xl p-8" style="--accent-color: #8b5cf6;">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="feature-icon w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <!-- Feature 2 — Evergreen -->
+        <div class="feature-card p-7" style="--accent:#8b5cf6;">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-purple-50 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-gray-900">Evergreen Queue</h3>
-              <p class="text-gray-600 text-sm mt-1">Keep your feed fresh with automated recycling</p>
+              <h3 style="font-size:16px; font-weight:600;" class="text-gray-900 leading-tight">Evergreen Queue</h3>
+              <p style="font-size:14px; font-weight:400;" class="text-gray-400 mt-0.5">Keep your feed fresh with automated recycling</p>
             </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">Create a library of timeless content that automatically reposts on your schedule to maximize engagement.</p>
-          <button class="text-purple-600 font-semibold text-sm hover:text-purple-700 flex items-center gap-1">
-            Learn more →
+          <p style="font-size:14px; font-weight:400;" class="text-gray-500 leading-relaxed mb-4">Create a library of timeless content that automatically reposts on your schedule to maximize long-term engagement.</p>
+          <button class="text-purple-600 font-semibold text-sm hover:text-purple-700 flex items-center gap-1 transition-colors">
+            Create Queue <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
 
-        <!-- Feature 3 -->
-        <div class="feature-card rounded-2xl p-8" style="--accent-color: #10b981;">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="feature-icon w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <!-- Feature 3 — Recurring -->
+        <div class="feature-card p-7" style="--accent:#10b981;">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-gray-900">Recurring Posts</h3>
-              <p class="text-gray-600 text-sm mt-1">Schedule posts that repeat automatically</p>
+              <h3 style="font-size:16px; font-weight:600;" class="text-gray-900 leading-tight">Recurring Posts</h3>
+              <p style="font-size:14px; font-weight:400;" class="text-gray-400 mt-0.5">Schedule posts that repeat automatically</p>
             </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">Set up recurring content with custom intervals to maintain consistent posting without manual effort.</p>
-          <button class="text-emerald-600 font-semibold text-sm hover:text-emerald-700 flex items-center gap-1">
-            Learn more →
+          <p style="font-size:14px; font-weight:400;" class="text-gray-500 leading-relaxed mb-4">Set up recurring content with custom intervals to maintain consistent posting cadence without any manual effort.</p>
+          <button class="text-emerald-600 font-semibold text-sm hover:text-emerald-700 flex items-center gap-1 transition-colors">
+            Create Recurring Post <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
 
-        <!-- Feature 4 -->
-        <div class="feature-card rounded-2xl p-8" style="--accent-color: #f59e0b;">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="feature-icon w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+        <!-- Feature 4 — RSS -->
+        <div class="feature-card p-7" style="--accent:#f59e0b;">
+          <div class="flex items-start gap-4 mb-3">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-gray-900">RSS Feed Integration</h3>
-              <p class="text-gray-600 text-sm mt-1">Auto-share content from your favorite feeds</p>
+              <h3 style="font-size:16px; font-weight:600;" class="text-gray-900 leading-tight">RSS Feed Integration</h3>
+              <p style="font-size:14px; font-weight:400;" class="text-gray-400 mt-0.5">Auto-share content from your favorite feeds</p>
             </div>
           </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">Connect your RSS feeds and automatically publish new content to keep your audience engaged with fresh updates.</p>
-          <button class="text-amber-600 font-semibold text-sm hover:text-amber-700 flex items-center gap-1">
-            Learn more →
+          <p style="font-size:14px; font-weight:400;" class="text-gray-500 leading-relaxed mb-4">Connect your RSS feeds and automatically publish new content to keep your audience engaged with the latest updates.</p>
+          <button class="text-amber-600 font-semibold text-sm hover:text-amber-700 flex items-center gap-1 transition-colors">
+            Create RSS Post <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
+
       </div>
     </section>
 
@@ -495,21 +413,23 @@
     }
 
     function updateCTA() {
-      const btn = document.getElementById('connect-btn');
+      const btn  = document.getElementById('connect-btn');
       const hint = document.getElementById('selection-hint');
 
       if (selectedCount === 0) {
         btn.disabled = true;
+        btn.innerHTML = `
+          <svg class="w-4 h-4 inline mr-2 -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          Connect selected accounts`;
         hint.textContent = 'Select at least one platform to continue';
-        hint.className = 'text-sm font-medium text-gray-600';
+        hint.className = 'text-sm font-medium text-gray-500';
       } else {
         btn.disabled = false;
-        hint.textContent = `${selectedCount} platform${selectedCount > 1 ? 's' : ''} selected - Ready to connect!`;
-        hint.className = 'text-sm font-medium text-blue-600';
         btn.innerHTML = `
-          <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-          Connect ${selectedCount} account${selectedCount > 1 ? 's' : ''}
-        `;
+          <svg class="w-4 h-4 inline mr-2 -mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          Connect ${selectedCount} account${selectedCount > 1 ? 's' : ''}`;
+        hint.textContent = `${selectedCount} platform${selectedCount > 1 ? 's' : ''} selected — ready to connect!`;
+        hint.className = 'text-sm font-medium text-blue-600';
       }
     }
 
