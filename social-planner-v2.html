@@ -21,7 +21,7 @@
   <style>
     * { font-family: 'Inter', system-ui, sans-serif; }
 
-    body { background: linear-gradient(160deg, #f0f4ff 0%, #f8fafc 50%, #f0f4ff 100%); }
+    body { background: white; }
 
     /* ── Nav ── */
     .tab-active {
@@ -51,7 +51,16 @@
       display: flex;
       animation: popIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .check-ring { display: none; }
+    .check-ring {
+      display: none;
+      width: 20px;
+      height: 20px;
+      background: #3b82f6;
+      border-radius: 4px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+    }
 
     @keyframes popIn {
       0%   { transform: scale(0.4); opacity: 0; }
@@ -73,7 +82,6 @@
     /* ── Feature cards ── */
     .feature-card {
       background: white;
-      border: 1px solid #e2e8f0;
       border-radius: 16px;
       transition: box-shadow 0.25s ease, border-color 0.25s ease;
     }
@@ -150,21 +158,6 @@
         </p>
       </div>
 
-      <!-- Stats row -->
-      <div class="flex justify-center gap-16 mb-10">
-        <div class="text-center">
-          <div class="stat-number">11+</div>
-          <p class="text-gray-500 text-xs font-medium mt-1">Platforms</p>
-        </div>
-        <div class="text-center">
-          <div class="stat-number">2M+</div>
-          <p class="text-gray-500 text-xs font-medium mt-1">Posts Scheduled</p>
-        </div>
-        <div class="text-center">
-          <div class="stat-number">99%</div>
-          <p class="text-gray-500 text-xs font-medium mt-1">Uptime</p>
-        </div>
-      </div>
 
       <!-- Platform connection card — prominent -->
       <div class="bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/80 border border-blue-100 rounded-2xl px-10 py-12 shadow-sm">
@@ -178,8 +171,8 @@
         <div class="grid grid-cols-5 gap-4 mb-4">
 
           <!-- Facebook -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#1877F2">
@@ -189,8 +182,8 @@
           </div>
 
           <!-- Instagram -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)">
@@ -200,8 +193,8 @@
           </div>
 
           <!-- LinkedIn -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#0A66C2">
@@ -211,8 +204,8 @@
           </div>
 
           <!-- TikTok -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-black">
@@ -222,8 +215,8 @@
           </div>
 
           <!-- YouTube -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#FF0000">
@@ -237,8 +230,8 @@
         <div class="grid grid-cols-5 gap-4 mb-10">
 
           <!-- Pinterest -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#E60023">
@@ -248,8 +241,8 @@
           </div>
 
           <!-- Threads -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-black">
@@ -259,8 +252,8 @@
           </div>
 
           <!-- Bluesky -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#0085ff">
@@ -270,8 +263,8 @@
           </div>
 
           <!-- GBP -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm bg-white border border-gray-200">
@@ -281,8 +274,8 @@
           </div>
 
           <!-- Community -->
-          <div class="platform-card rounded-2xl p-5 flex flex-col items-center gap-3 relative" onclick="togglePlatform(event)">
-            <div class="check-ring absolute top-2.5 right-2.5 w-6 h-6 bg-blue-600 rounded-full items-center justify-center shadow-md">
+          <div class="platform-card p-5 flex flex-col items-center gap-3 relative" style="border-radius:8px;" onclick="togglePlatform(event)">
+            <div class="check-ring absolute top-2.5 right-2.5 items-center justify-center">
               <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             </div>
             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm" style="background:#7C3AED">
@@ -326,7 +319,7 @@
         <!-- Feature 1 — CSV -->
         <div class="feature-card p-7" style="--accent:#3b82f6;">
           <div class="flex items-start gap-4 mb-3">
-            <div class="feature-icon shrink-0 w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-blue-50 flex items-center justify-center" style="border-radius:6px;">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
             </div>
             <div>
@@ -343,7 +336,7 @@
         <!-- Feature 2 — Evergreen -->
         <div class="feature-card p-7" style="--accent:#8b5cf6;">
           <div class="flex items-start gap-4 mb-3">
-            <div class="feature-icon shrink-0 w-11 h-11 bg-purple-50 rounded-xl flex items-center justify-center">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-purple-50 flex items-center justify-center" style="border-radius:6px;">
               <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             </div>
             <div>
@@ -360,7 +353,7 @@
         <!-- Feature 3 — Recurring -->
         <div class="feature-card p-7" style="--accent:#10b981;">
           <div class="flex items-start gap-4 mb-3">
-            <div class="feature-icon shrink-0 w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-emerald-50 rounded flex items-center justify-center">
               <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
             <div>
@@ -377,7 +370,7 @@
         <!-- Feature 4 — RSS -->
         <div class="feature-card p-7" style="--accent:#f59e0b;">
           <div class="flex items-start gap-4 mb-3">
-            <div class="feature-icon shrink-0 w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center">
+            <div class="feature-icon shrink-0 w-11 h-11 bg-amber-50 rounded flex items-center justify-center">
               <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
             </div>
             <div>
