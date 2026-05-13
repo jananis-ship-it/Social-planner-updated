@@ -82,11 +82,12 @@
       border-color: #3b82f6;
       box-shadow: 0 0 0 2px rgba(59,130,246,0.2), 0 4px 12px rgba(59,130,246,0.15);
     }
-    .platform-card:hover .connect-btn {
-      background-color: #3b82f6;
-    }
     .connect-btn {
-      background:#9ca3af;color:white;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;margin-top:auto;cursor:pointer;transition:background-color 0.2s ease;
+      background:#f3f4f6;color:#4b5563;font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;margin-top:auto;cursor:pointer;transition:all 0.2s ease;
+    }
+    .platform-card:hover .connect-btn {
+      background-color:#4b5563;
+      color:white;
     }
     .platform-card.selected {
       border-color: #3b82f6;
@@ -349,15 +350,9 @@
 
             <!-- ══ PLATFORM CONNECT GRID ══ -->
             <section style="padding:32px 32px 24px;">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;">
-                <div>
-                  <h2 style="font-size:16px;font-weight:550;color:#111827;margin-bottom:4px;">Connect your social accounts</h2>
-                  <p style="font-size:14px;color:#6b7280;">Pick where you want to publish. You can add or remove networks anytime.</p>
-                </div>
-                <div style="text-align:right;">
-                  <div style="font-size:14px;font-weight:550;color:#111827;">0 of 10 connected</div>
-                  <div style="font-size:12px;color:#6b7280;">Connect one to begin</div>
-                </div>
+              <div style="text-align:center;margin-bottom:24px;">
+                <h2 style="font-size:16px;font-weight:550;color:#111827;margin-bottom:4px;">Connect your social accounts</h2>
+                <p style="font-size:14px;color:#6b7280;">Pick where you want to publish. You can add or remove networks anytime.</p>
               </div>
 
               <!-- MAJOR NETWORKS Section -->
